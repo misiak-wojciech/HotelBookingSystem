@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using HotelBookingSystem.Domain.Entities;
 using HotelBookingSystem.Application.DTOs;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace HotelBookingSystem.Application.Mapping
 {

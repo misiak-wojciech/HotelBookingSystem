@@ -36,7 +36,7 @@ namespace HotelBookingSystem.API.Controllers
             var hotel = await _hotelRepository.GetByIdAsync(id);
             if (hotel == null)
             {
-                return NotFound();
+                return NotFound($"Hotel with ID {id} not found.");
             }
             var hotelDto = _mapper.Map<HotelDto>(hotel);
             return Ok(hotelDto);
@@ -48,7 +48,7 @@ namespace HotelBookingSystem.API.Controllers
         {
             if (hotelDto == null)
             {
-                return BadRequest();
+                return BadRequest("Hotel data is required.");
             }
 
             var hotel = _mapper.Map<Hotel>(hotelDto);
@@ -62,13 +62,13 @@ namespace HotelBookingSystem.API.Controllers
         {
             if (id != hotelDto.Id)
             {
-                return BadRequest();
+                return BadRequest("Hotel ID mismatch.");
             }
 
             var hotel = await _hotelRepository.GetByIdAsync(id);
             if (hotel == null)
             {
-                return NotFound();
+                return NotFound($"Hotel with ID {id} not found.");
             }
 
             _mapper.Map(hotelDto, hotel);
@@ -83,7 +83,7 @@ namespace HotelBookingSystem.API.Controllers
             var hotel = await _hotelRepository.GetByIdAsync(id);
             if (hotel == null)
             {
-                return NotFound();
+                return NotFound($"Hotel with ID {id} not found.");
             }
 
             await _hotelRepository.DeleteAsync(id);
