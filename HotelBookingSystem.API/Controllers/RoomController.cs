@@ -76,10 +76,6 @@ namespace HotelBookingSystem.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateRoom(int id, [FromBody] RoomDto roomDto)
         {
-            if (id != roomDto.Id)
-            {
-                return BadRequest("Room ID mismatch.");
-            }
 
             var room = await _roomRepository.GetByIdAsync(id);
             if (room == null)
